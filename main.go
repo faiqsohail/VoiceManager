@@ -340,6 +340,7 @@ func watchChannelInactivity(ctx context.Context, s *discordgo.Session, channelID
             empty, err := isVoiceChannelEmpty(s, guildID, channelID)
             if err != nil {
                 log.Printf("[Warning] Could not check occupancy for channel %s: %v", channelID, err)
+                cleanUpChannel(channelID)
                 continue
             }
 
